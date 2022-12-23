@@ -96,7 +96,7 @@ var upperCasedCharacters = [
 
 function getPasswordOption() {
   var passwordLength = prompt ("Please input how long you would like your generated password to be. Minimum is 8 and max is 128.")
-  if(passwordLength <8 || typeof passwordLength === "number"){
+  if(passwordLength >= 8 && passwordLength <= 128 && typeof passwordLength === "number" ){
 
 
   }
@@ -112,8 +112,29 @@ function writePassword() {
   passwordText.value = password;
 
 }
-function wantSpecialCharacters (){
-  confirm ("Would you like your password to have special characters")
+
+//Ask user if they want special characters
+function specialCharsQuestion (){
+  let wantCharacters = confirm ("Would you like your password to have special characters ?")
+  if (wantCharacters) {
+    var yesCharacters = wantCharacters;
+  }
+}
+
+//Ask user if they want lower cased letters
+function lowerCasedQuestion (){
+  let wantLowerCased = confirm ("Would you like your password to have lower cased letters ?")
+  if (wantLowerCased) {
+    var yesLowerCased = wantLowerCased;
+  }
+}
+
+//Ask user if they want upper cased letters
+function upperCasedQuestion (){
+  let wantUpperCased = confirm ("Would you like your password to have lower cased letters ?")
+  if (wantUpperCased) {
+    var yesUpperCased = wantUpperCased;
+  }
 }
 
 // Add event listener to generate button
