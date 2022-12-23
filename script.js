@@ -115,39 +115,47 @@ function writePassword() {
 
 //Ask user if they want special characters
 function specialCharsQuestion (){
-  let wantCharacters = confirm ("Would you like your password to have special characters ?")
+  var wantCharacters = confirm ("Would you like your password to have special characters ?")
   if (wantCharacters) {
-    var yesCharacters = wantCharacters;
+    alert("You opted to have special characters in your password.");
+  } else {
+    alert("You opted to NOT have special characters in your password.");
   }
+  return wantCharacters;
 }
 
 //Ask user if they want lower cased letters
 function lowerCasedQuestion (){
-  let wantLowerCased = confirm ("Would you like your password to have lower cased letters ?")
+  var wantLowerCased = confirm ("Would you like your password to have lower cased letters ?")
   if (wantLowerCased) {
-    var yesLowerCased = wantLowerCased;
+    alert("You opted to have lower case letters in your password.");
+  } else {
+    alert("You opted to NOT have lower case letters in your password.");
   }
+  return wantLowerCased;
 }
 
 //Ask user if they want upper cased letters
 function upperCasedQuestion (){
-  let wantUpperCased = confirm ("Would you like your password to have lower cased letters ?")
+  var wantUpperCased = confirm ("Would you like your password to have upper cased letters ?")
   if (wantUpperCased) {
-    var yesUpperCased = wantUpperCased;
-    alert("You opted to have upper case letters in your password.")
+    alert("You opted to have upper case letters in your password.");
+  } else {
+    alert("You opted to NOT have upper case letters in your password.");
   }
+  return wantUpperCased;
 }
 
 //Ask user if they want numeric values
 function numericQuestion (){
-  let wantNumeric = confirm ("Would you like your password to have lower cased letters ?")
+  var wantNumeric = confirm ("Would you like your password to have numbers ?")
   if (wantNumeric) {
-    var yesNumeric = wantNumeric ;
-    alert("You opted to have lower case letters in your password.")
+    alert("You opted to have numbers in your password.")
   } else {
-    alert("You opted to NOT have lower case letters in your password.")
+    alert("You opted to NOT have numbers in your password.")
   }
-  return yesNumeric;
+  console.log (wantNumeric);
+  return wantNumeric;
 }
 
 // Add event listener to generate button
