@@ -134,8 +134,23 @@ function upperCasedQuestion (){
   let wantUpperCased = confirm ("Would you like your password to have lower cased letters ?")
   if (wantUpperCased) {
     var yesUpperCased = wantUpperCased;
+    alert("You opted to have upper case letters in your password.")
   }
+}
+
+//Ask user if they want numeric values
+function numericQuestion (){
+  let wantNumeric = confirm ("Would you like your password to have lower cased letters ?")
+  if (wantNumeric) {
+    var yesNumeric = wantNumeric ;
+    alert("You opted to have lower case letters in your password.")
+  } else {
+    alert("You opted to NOT have lower case letters in your password.")
+  }
+  return yesNumeric;
 }
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+numericQuestion()
+
