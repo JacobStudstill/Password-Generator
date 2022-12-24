@@ -115,28 +115,52 @@ function getPasswordOption() {
     getPasswordOption();
   }
   else {
+
       //Ask the user what they want in their password.
+
+    //if wantCharacters is true, concat specialCharacters to the addOptions array and alert user of their choice. If false, alert user
     var wantCharacters = confirm ("Would you like your password to have special characters ?")
+    if (wantCharacters) {
+      addOptions = addOptions.concat(specialCharacters)
+      alert ("You opted to have special characters in your password")
+    } else{
+      alert ("You opted to NOT have special characters in your password")
+    }
+
+    //if wantLowerCased is true, concat lowerCasedCharacters to the addOptions array and alert user of their choice. If false, alert user
     var wantLowerCased = confirm ("Would you like your password to have lower cased letters ?")
+    if (wantLowerCased) {
+      addOptions = addOptions.concat(lowerCasedCharacters)
+      alert ("You opted to have lower cased letters in your password")
+    } else {
+      alert ("You opted to NOT have lower cased letters in your password")
+    }
+
+    //if wantUpperCased is true, concat upperCasedCharacters to the addOptions array and alert user of their choice. If false, alert user
     var wantUpperCased = confirm ("Would you like your password to have upper cased letters ?")
+    if (wantUpperCased) {
+      addOptions = addOptions.concat(upperCasedCharacters)
+      alert ("You opted to have upper cased letters in your password")
+    } else {
+      alert ("You opted to NOT have upper cased letters in your password")
+    }
+
     var wantNumeric = confirm ("Would you like your password to have numbers in it ?")
-    //if 
-  if (wantCharacters) {
-    addOptions = addOptions.concat(specialCharacters)
-  }
-  if (wantNumeric) {
-    addOptions = addOptions.concat(numericCharacters)
-  }
-  if (wantLowerCased) {
-    addOptions = addOptions.concat(lowerCasedCharacters)
-  }
-  if (wantUpperCased) {
-    addOptions = addOptions.concat(upperCasedCharacters)
-  }
+    //if wantNumeric is true, concat numericCharacters to the addOptions array and alert user of their choice. If false, alert user
+    if (wantNumeric) {
+      addOptions = addOptions.concat(numericCharacters)
+      alert ("You opted to have numbers in your password")
+    } else {
+      alert ("You opted to NOT have numbers in your password")
+    }
+
+    //If all confirms were false, alert user and restart function
   if (wantCharacters == false && wantNumeric == false && wantLowerCased == false && wantUpperCased ==false){
     alert("You must choose at least one type of character for your password")
     getPasswordOption()
   }
+
+  //If password length is correct. Run a for loop randomizing our addOption array and adding it to our password every time it runs
   if(passwordLength >= 8 && passwordLength <= 128){
     for(var i=0; i < passwordLength; i++) {
       randomPassword = Math.floor(Math.random() * addOptions.length);
@@ -144,16 +168,8 @@ function getPasswordOption() {
     }
   }
 }
+//Write the password to the password box
   document.getElementById("password").innerHTML = finalPassword
-}
-
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-
 }
 
 // Add event listener to generate button
