@@ -1,12 +1,19 @@
 // Assignment Code
-var generateBtn = document.querySelector("#generate");
 
+//Define variables
+var generateBtn = document.querySelector("#generate");
+var wantCharacters;
+var wantLowerCased;
+var wantUpperCased;
+var wantNumeric;
+
+
+// var passwordArray []
 //Array of special characters
 var specialCharacters = [
   '@',
   '%',
   '+',
-  '\\',
   '/',
   "'",
   '!',
@@ -95,12 +102,48 @@ var upperCasedCharacters = [
 ];
 
 function getPasswordOption() {
+
+  //Empty variables we will use later
+  var finalPassword = ""
+  var addOptions = []
+
+
+  //Ask the user what they want the length of the password to be
   var passwordLength = prompt ("Please input how long you would like your generated password to be. Minimum is 8 and max is 128.")
-  if(passwordLength >= 8 && passwordLength <= 128 && typeof passwordLength === "number" ){
-
-
+  if (passwordLength < 8 || passwordLength > 128){
+    alert("Please choose a password length between 8 and 128 characters")
+    getPasswordOption();
   }
-
+  else {
+      //Ask the user what they want in their password.
+    var wantCharacters = confirm ("Would you like your password to have special characters ?")
+    var wantLowerCased = confirm ("Would you like your password to have lower cased letters ?")
+    var wantUpperCased = confirm ("Would you like your password to have upper cased letters ?")
+    var wantNumeric = confirm ("Would you like your password to have numbers in it ?")
+  if (wantCharacters) {
+    addOptions = addOptions.concat(specialCharacters)
+  }
+  if (wantNumeric) {
+    addOptions = addOptions.concat(numericCharacters)
+  }
+  if (wantLowerCased) {
+    addOptions = addOptions.concat(lowerCasedCharacters)
+  }
+  if (wantUpperCased) {
+    addOptions = addOptions.concat(upperCasedCharacters)
+  }
+  if (wantCharacters == false && wantNumeric == false && wantLowerCased == false && wantUpperCased ==false){
+    alert("You must choose at least one type of character for your password")
+    getPasswordOption()
+  }
+  if(passwordLength >= 8 && passwordLength <= 128){
+    for(var i=0; i < passwordLength; i++) {
+      randomPassword = Math.floor(Math.random() * addOptions.length);
+      finalPassword+=addOptions[randomPassword]
+    }
+  }
+  console.log (finalPassword)
+}
   
 }
 
@@ -114,51 +157,50 @@ function writePassword() {
 }
 
 //Ask user if they want special characters
-function specialCharsQuestion (){
-  var wantCharacters = confirm ("Would you like your password to have special characters ?")
-  if (wantCharacters) {
-    alert("You opted to have special characters in your password.");
-  } else {
-    alert("You opted to NOT have special characters in your password.");
-  }
-  return wantCharacters;
-}
+// function specialCharsQuestion (){
+//   var wantCharacters = confirm ("Would you like your password to have special characters ?")
+//   if (wantCharacters) {
+//     alert("You opted to have special characters in your password.");
+//   } else {
+//     alert("You opted to NOT have special characters in your password.");
+//   }
+//   return wantCharacters == true;
+// }
 
 //Ask user if they want lower cased letters
-function lowerCasedQuestion (){
-  var wantLowerCased = confirm ("Would you like your password to have lower cased letters ?")
-  if (wantLowerCased) {
-    alert("You opted to have lower case letters in your password.");
-  } else {
-    alert("You opted to NOT have lower case letters in your password.");
-  }
-  return wantLowerCased;
-}
+// function lowerCasedQuestion (){
+//   var wantLowerCased = confirm ("Would you like your password to have lower cased letters ?")
+//   if (wantLowerCased) {
+//     alert("You opted to have lower case letters in your password.");
+//   } else {
+//     alert("You opted to NOT have lower case letters in your password.");
+//   }
+//   return wantLowerCased;
+// }
 
 //Ask user if they want upper cased letters
-function upperCasedQuestion (){
-  var wantUpperCased = confirm ("Would you like your password to have upper cased letters ?")
-  if (wantUpperCased) {
-    alert("You opted to have upper case letters in your password.");
-  } else {
-    alert("You opted to NOT have upper case letters in your password.");
-  }
-  return wantUpperCased;
-}
+// function upperCasedQuestion (){
+//   var wantUpperCased = confirm ("Would you like your password to have upper cased letters ?")
+//   if (wantUpperCased) {
+//     alert("You opted to have upper case letters in your password.");
+//   } else {
+//     alert("You opted to NOT have upper case letters in your password.");
+//   }
+//   return wantUpperCased;
+// }
 
 //Ask user if they want numeric values
-function numericQuestion (){
-  var wantNumeric = confirm ("Would you like your password to have numbers ?")
-  if (wantNumeric) {
-    alert("You opted to have numbers in your password.")
-  } else {
-    alert("You opted to NOT have numbers in your password.")
-  }
-  console.log (wantNumeric);
-  return wantNumeric;
-}
+// function numericQuestion (){
+//   var wantNumeric = confirm ("Would you like your password to have numbers ?")
+//   if (wantNumeric) {
+//     alert("You opted to have numbers in your password.")
+//   } else {
+//     alert("You opted to NOT have numbers in your password.")
+//   }
+//   return wantNumeric;
+
+// }
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-numericQuestion()
-
+getPasswordOption()
