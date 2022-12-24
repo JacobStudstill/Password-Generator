@@ -144,7 +144,7 @@ function getPasswordOption() {
     }
   }
 }
-  
+  document.getElementById("password").innerHTML = finalPassword
 }
 
 // Write password to the #password input
