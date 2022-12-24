@@ -111,7 +111,7 @@ function getPasswordOption() {
   //Ask the user what they want the length of the password to be
   var passwordLength = prompt ("Please input how long you would like your generated password to be. Minimum is 8 and max is 128.")
   if (passwordLength < 8 || passwordLength > 128){
-    alert("Please choose a password length between 8 and 128 characters")
+    alert("Please choose a password length between 8 and 128 characters.")
     getPasswordOption();
   }
   else {
@@ -122,41 +122,41 @@ function getPasswordOption() {
     var wantCharacters = confirm ("Would you like your password to have special characters ?")
     if (wantCharacters) {
       addOptions = addOptions.concat(specialCharacters)
-      alert ("You opted to have special characters in your password")
+      alert ("You opted to have special characters in your password.")
     } else{
-      alert ("You opted to NOT have special characters in your password")
+      alert ("You opted to NOT have special characters in your password.")
     }
 
     //if wantLowerCased is true, concat lowerCasedCharacters to the addOptions array and alert user of their choice. If false, alert user
     var wantLowerCased = confirm ("Would you like your password to have lower cased letters ?")
     if (wantLowerCased) {
       addOptions = addOptions.concat(lowerCasedCharacters)
-      alert ("You opted to have lower cased letters in your password")
+      alert ("You opted to have lower cased letters in your password.")
     } else {
-      alert ("You opted to NOT have lower cased letters in your password")
+      alert ("You opted to NOT have lower cased letters in your password.")
     }
 
     //if wantUpperCased is true, concat upperCasedCharacters to the addOptions array and alert user of their choice. If false, alert user
     var wantUpperCased = confirm ("Would you like your password to have upper cased letters ?")
     if (wantUpperCased) {
       addOptions = addOptions.concat(upperCasedCharacters)
-      alert ("You opted to have upper cased letters in your password")
+      alert ("You opted to have upper cased letters in your password.")
     } else {
-      alert ("You opted to NOT have upper cased letters in your password")
+      alert ("You opted to NOT have upper cased letters in your password.")
     }
 
     var wantNumeric = confirm ("Would you like your password to have numbers in it ?")
     //if wantNumeric is true, concat numericCharacters to the addOptions array and alert user of their choice. If false, alert user
     if (wantNumeric) {
       addOptions = addOptions.concat(numericCharacters)
-      alert ("You opted to have numbers in your password")
+      alert ("You opted to have numbers in your password.")
     } else {
-      alert ("You opted to NOT have numbers in your password")
+      alert ("You opted to NOT have numbers in your password.")
     }
 
     //If all confirms were false, alert user and restart function
   if (wantCharacters == false && wantNumeric == false && wantLowerCased == false && wantUpperCased ==false){
-    alert("You must choose at least one type of character for your password")
+    alert("You must choose at least one type of character for your password.")
     getPasswordOption()
   }
 
